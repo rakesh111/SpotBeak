@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ApplicationDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ApplicationDataStore">
+    <EntitySet Name="Clients" EntityType="ApplicationDataStore.Client" store:Type="Tables" Schema="dbo" Table="Clients" />
+    <EntitySet Name="Hubs" EntityType="ApplicationDataStore.Hub" store:Type="Tables" Schema="dbo" Table="Hubs" />
+    <EntitySet Name="Spots" EntityType="ApplicationDataStore.Spot" store:Type="Tables" Schema="dbo" Table="Spots" />
+    <EntitySet Name="Cards" EntityType="ApplicationDataStore.Card" store:Type="Tables" Schema="dbo" Table="Cards" />
+    <EntitySet Name="SpotAssignments" EntityType="ApplicationDataStore.SpotAssignment" store:Type="Tables" Schema="dbo" Table="SpotAssignments" />
+    <EntitySet Name="CardAssignments" EntityType="ApplicationDataStore.CardAssignment" store:Type="Tables" Schema="dbo" Table="CardAssignments" />
+    <AssociationSet Name="Client_Hub" Association="ApplicationDataStore.Client_Hub">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Hub" EntitySet="Hubs" />
+    </AssociationSet>
+    <AssociationSet Name="Client_Spot" Association="ApplicationDataStore.Client_Spot">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Spot" EntitySet="Spots" />
+    </AssociationSet>
+    <AssociationSet Name="Client_Card" Association="ApplicationDataStore.Client_Card">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Card" EntitySet="Cards" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Address2" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Pin" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Notes" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Hub">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Lat" Type="bigint" Nullable="false" />
+    <Property Name="Lon" Type="bigint" Nullable="false" />
+    <Property Name="MapX" Type="int" Nullable="false" />
+    <Property Name="MapY" Type="int" Nullable="false" />
+    <Property Name="Descriptions" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Detail" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ParentHubId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Client_Hub" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="MapX" Type="int" Nullable="false" />
+    <Property Name="MapY" Type="int" Nullable="false" />
+    <Property Name="MapZ" Type="int" Nullable="false" />
+    <Property Name="Client_Spot" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="ClientId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ImageURL" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="VideoURL" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Client_Card" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpotAssignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="HubId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="SpotId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardAssignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="CardId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="SpotId" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="Client_Hub">
+    <End Role="Client" Type="ApplicationDataStore.Client" Multiplicity="1" />
+    <End Role="Hub" Type="ApplicationDataStore.Hub" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hub">
+        <PropertyRef Name="Client_Hub" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Client_Spot">
+    <End Role="Client" Type="ApplicationDataStore.Client" Multiplicity="1" />
+    <End Role="Spot" Type="ApplicationDataStore.Spot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spot">
+        <PropertyRef Name="Client_Spot" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Client_Card">
+    <End Role="Client" Type="ApplicationDataStore.Client" Multiplicity="1" />
+    <End Role="Card" Type="ApplicationDataStore.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="Client_Card" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

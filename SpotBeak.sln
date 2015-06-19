@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8A4D642E-824A-4D58-BD56-648CC30C8F17}") = "SpotBeak", "SpotBeak\SpotBeak.ls3proj", "{08725BDC-DF66-48BA-B0D4-B862FF6B40E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08725BDC-DF66-48BA-B0D4-B862FF6B40E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08725BDC-DF66-48BA-B0D4-B862FF6B40E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08725BDC-DF66-48BA-B0D4-B862FF6B40E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08725BDC-DF66-48BA-B0D4-B862FF6B40E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7EC8C2-79A4-4ED2-8BAF-DDEAA894F33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7EC8C2-79A4-4ED2-8BAF-DDEAA894F33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7EC8C2-79A4-4ED2-8BAF-DDEAA894F33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7EC8C2-79A4-4ED2-8BAF-DDEAA894F33E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64AA6B6B-97EC-49AB-8A4C-50B8D9499D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64AA6B6B-97EC-49AB-8A4C-50B8D9499D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64AA6B6B-97EC-49AB-8A4C-50B8D9499D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64AA6B6B-97EC-49AB-8A4C-50B8D9499D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

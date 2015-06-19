@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="ApplicationData" StorageEntityContainer="ApplicationDataStore">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Client)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hubs">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Hub)">
+        <MappingFragment StoreEntitySet="Hubs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lon" ColumnName="Lon" />
+          <ScalarProperty Name="MapX" ColumnName="MapX" />
+          <ScalarProperty Name="MapY" ColumnName="MapY" />
+          <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="ParentHubId" ColumnName="ParentHubId" />
+          <ScalarProperty Name="Client_Hub" ColumnName="Client_Hub" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Spots">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Spot)">
+        <MappingFragment StoreEntitySet="Spots">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="MapX" ColumnName="MapX" />
+          <ScalarProperty Name="MapY" ColumnName="MapY" />
+          <ScalarProperty Name="MapZ" ColumnName="MapZ" />
+          <ScalarProperty Name="Client_Spot" ColumnName="Client_Spot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cards">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.Card)">
+        <MappingFragment StoreEntitySet="Cards">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
+          <ScalarProperty Name="Client_Card" ColumnName="Client_Card" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpotAssignments">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.SpotAssignment)">
+        <MappingFragment StoreEntitySet="SpotAssignments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="HubId" ColumnName="HubId" />
+          <ScalarProperty Name="SpotId" ColumnName="SpotId" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardAssignments">
+      <EntityTypeMapping TypeName="IsTypeOf(LightSwitchApplication.CardAssignment)">
+        <MappingFragment StoreEntitySet="CardAssignments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+          <ScalarProperty Name="CardId" ColumnName="CardId" />
+          <ScalarProperty Name="SpotId" ColumnName="SpotId" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="UserId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Address1" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Address2" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Pin" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Phone" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Notes" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="Hubs" Relationship="LightSwitchApplication.Client_Hub" ToRole="Hub" FromRole="Client" />
+    <NavigationProperty Name="Spots" Relationship="LightSwitchApplication.Client_Spot" ToRole="Spot" FromRole="Client" />
+    <NavigationProperty Name="Cards" Relationship="LightSwitchApplication.Client_Card" ToRole="Card" FromRole="Client" />
+  </EntityType>
+  <EntityType Name="Hub">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="ClientId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Lat" Type="Edm.Int64" Nullable="false" />
+    <Property Name="Lon" Type="Edm.Int64" Nullable="false" />
+    <Property Name="MapX" Type="Edm.Int32" Nullable="false" />
+    <Property Name="MapY" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Descriptions" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Detail" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="ParentHubId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Client_Hub" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="LightSwitchApplication.Client_Hub" ToRole="Client" FromRole="Hub" />
+  </EntityType>
+  <EntityType Name="Spot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="ClientId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="MapX" Type="Edm.Int32" Nullable="false" />
+    <Property Name="MapY" Type="Edm.Int32" Nullable="false" />
+    <Property Name="MapZ" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Client_Spot" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="LightSwitchApplication.Client_Spot" ToRole="Client" FromRole="Spot" />
+  </EntityType>
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="ClientId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="ImageURL" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="VideoURL" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Client_Card" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="LightSwitchApplication.Client_Card" ToRole="Client" FromRole="Card" />
+  </EntityType>
+  <EntityType Name="SpotAssignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="HubId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="SpotId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="FromDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="ToDate" Type="Edm.DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardAssignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CardId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="SpotId" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="FromDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="ToDate" Type="Edm.DateTime" Nullable="false" />
+  </EntityType>
+  <Association Name="Client_Hub">
+    <End Role="Client" Type="LightSwitchApplication.Client" Multiplicity="1" />
+    <End Role="Hub" Type="LightSwitchApplication.Hub" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hub">
+        <PropertyRef Name="Client_Hub" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Client_Spot">
+    <End Role="Client" Type="LightSwitchApplication.Client" Multiplicity="1" />
+    <End Role="Spot" Type="LightSwitchApplication.Spot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spot">
+        <PropertyRef Name="Client_Spot" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Client_Card">
+    <End Role="Client" Type="LightSwitchApplication.Client" Multiplicity="1" />
+    <End Role="Card" Type="LightSwitchApplication.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="Client_Card" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApplicationData" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="Clients" EntityType="LightSwitchApplication.Client" />
+    <EntitySet Name="Hubs" EntityType="LightSwitchApplication.Hub" />
+    <EntitySet Name="Spots" EntityType="LightSwitchApplication.Spot" />
+    <EntitySet Name="Cards" EntityType="LightSwitchApplication.Card" />
+    <EntitySet Name="SpotAssignments" EntityType="LightSwitchApplication.SpotAssignment" />
+    <EntitySet Name="CardAssignments" EntityType="LightSwitchApplication.CardAssignment" />
+    <AssociationSet Name="Client_Hub" Association="LightSwitchApplication.Client_Hub">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Hub" EntitySet="Hubs" />
+    </AssociationSet>
+    <AssociationSet Name="Client_Spot" Association="LightSwitchApplication.Client_Spot">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Spot" EntitySet="Spots" />
+    </AssociationSet>
+    <AssociationSet Name="Client_Card" Association="LightSwitchApplication.Client_Card">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Card" EntitySet="Cards" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
